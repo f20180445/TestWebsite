@@ -1,0 +1,13 @@
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <!-- this is the hardcoded url -->
+        <!--<li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>-->
+        <!-- this is the url picked up from polls.urls -->
+        <!-- polls:detail tells us that this url is for the app polls -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
